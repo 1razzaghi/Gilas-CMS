@@ -1,0 +1,102 @@
+@font-face {
+    font-family: "BMitra";
+    src: url("../../../fonts/BMitra.eot?#") format("eot"), url("../../../fonts/BMitra.woff") format("woff"), url("../../../fonts/BMitra.ttf") format("truetype");
+}
+
+*,input,textarea,select{
+    font-family: "BMitra";
+    font-size: 16px;
+}
+
+body{
+    direction: rtl;
+    padding-top: 60px;
+    background-color: #FFFFFF;
+    background-image: url("../img/template/grid-18px-masked.png");
+    background-position: 0 40px;
+    background-repeat: repeat-x;
+    position: relative;
+}
+
+#header{
+    background-image: url(../img/template/header.png);
+    height: 120px;
+    background-repeat: no-repeat;
+}
+
+.login-container{
+    margin: 0 auto;
+    width: 300px;
+}
+
+pre{
+    direction: ltr;
+}
+
+.user-info{
+    float: left;
+    padding-top: 10px;
+}
+
+#error{
+    width: -moz-fit-content;
+}
+
+form .required {
+    font-weight: bold;
+}
+form .required label:after {
+    color: #e32;
+    content: '*';
+    display:inline;
+}
+
+select, input[type="file"]{
+    height: 35px!important;
+}
+
+ul.nav li a ,.user-info{
+    line-height: 25px !important;
+}
+
+/* SQL log */
+.cake-sql-log td {
+    padding: 4px 8px!important;
+    text-align: left!important;
+    font-family: Monaco, Consolas, "Courier New", monospaced!important;
+}
+
+.cake-stack-trace {
+    background: rgba(255, 255, 255, 0.7);
+    color: #333;
+    margin: 10px 0 5px 0;
+    padding: 10px 10px 0 10px;
+    font-size: 120%;
+    line-height: 140%;
+    overflow: auto;
+    position: relative;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+.cake-stack-trace a {
+    text-shadow: none;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin: 0px 4px 10px 2px;
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+    display: inline-block;
+    text-decoration: none;
+    -moz-box-shadow: inset 0px 1px 0 rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0px 1px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+#grid-align{
+    text-align: center;
+}
