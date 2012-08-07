@@ -28,6 +28,8 @@ class GalleryItemsController extends AppController {
                 $this->_imageUpload($uploded_file, $folder_path['GalleryCategory']['folder_name'], $this->request->data['GalleryItem']['name']);
                 $this->Session->setFlash('تصویر با موفقیت ذخیره شد.', 'message', array('type' => 'success'));
                 $this->redirect(array('action' => 'index', 'admin' => TRUE));
+            } else {
+                $this->Session->setFlash('خطای شماره 13 - اطلاعات وارد شده معتبر نمی باشد. لطفا به خطاهای سیستم دقت کرده و مجددا تلاش نمایید.', 'message', array('type' => 'error'));
             }
         }
     }
@@ -41,7 +43,38 @@ class GalleryItemsController extends AppController {
     }
 
     public function admin_edit($id = NULL) {
-        
+        $this->set('title_for_layout', 'ویرایش اطلاعات تصویر');
+        $this->GalleryItem->id = $id;
+        $this->set('galleryCategories', $this->GalleryItem->GalleryCategory->find('list'));
+        $requestData = $this->GalleryItem->read();
+        if (!$this->GalleryItem->exists()) {
+            throw new NotFoundException('خطای شماره 14 – امکان انجام عملیات درخواستی بدلیل ارسال نادرست اطلاعات وجود ندارد!');
+        }
+
+        if ($this->request->is('post') || $this->request->is('put')) {
+            debug($this->request->data);
+            if (empty($this->request->data['GalleryItem']['name']['name'])) {
+                $this->request->data['GalleryItem']['name'] = $requestData['GalleryItem']['name'];
+                $mustUpload = FALSE;
+            } else {
+                $uploded_file = $this->request->data['GalleryItem']['name']['tmp_name'];
+                $this->request->data['GalleryItem']['name'] = $this->request->data['GalleryItem']['name']['name'];
+                $folder_path = $this->GalleryItem->GalleryCategory->findById($this->request->data['GalleryItem']['gallery_category_id'], array('folder_name'));
+                $mustUpload = TRUE;
+            }
+            debug($this->request->data);
+            die;
+            if ($this->GalleryItem->save($this->request->data)) {
+                if ($mustUpload)
+                    $this->_imageUpload($uploded_file, $folder_path['GalleryCategory']['folder_name'], $this->request->data['GalleryItem']['name']);
+                $this->Session->setFlash('تصویر با موفقیت ویرایش شد.', 'message', array('type' => 'success'));
+                $this->redirect(array('action' => 'index', 'admin' => TRUE));
+            } else {
+                $this->Session->setFlash('خطای شماره 13 - اطلاعات وارد شده معتبر نمی باشد. لطفا به خطاهای سیستم دقت کرده و مجددا تلاش نمایید.', 'message', array('type' => 'error'));
+            }
+        } else {
+            $this->request->data = $requestData;
+        }
     }
 
 }
