@@ -38,7 +38,7 @@ pre{
     padding-top: 10px;
 }
 
-#error{
+#msg{
     width: -moz-fit-content;
 }
 
@@ -99,4 +99,21 @@ ul.nav li a ,.user-info{
 
 #grid-align{
     text-align: center;
+}
+
+.o2k7Skin table, .o2k7Skin tbody, .o2k7Skin a, .o2k7Skin img, .o2k7Skin tr, .o2k7Skin div, .o2k7Skin td, .o2k7Skin iframe, .o2k7Skin span, .o2k7Skin *, .o2k7Skin .mceText{
+    text-align: right !important;
+}
+
+tr .mceFirst{
+    text-align: right !important;
+}
+
+.tinymce{
+    width: 650px;
+    height: 300px;
+}
+
+.caret{
+    margin-top: 14px !important;
 }

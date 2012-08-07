@@ -25,10 +25,10 @@ class UsersController extends AppController {
         }
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
-                $this->Session->setFlash('شما با موفقیت وارد سیستم شدید', 'message', array('type' => 'alert-success'));
+                $this->Session->setFlash('شما با موفقیت وارد سیستم شدید', 'message', array('type' => 'success'));
                 $this->redirect($this->Auth->redirect());
             } else {
-                $this->Session->setFlash('خطای شماره 11 - امکان ورود به سیستم وجود ندارد!', 'message', array('type' => 'alert-error'));
+                $this->Session->setFlash('خطای شماره 11 - امکان ورود به سیستم وجود ندارد!', 'message', array('type' => 'error'));
             }
         } /* else {
           $this->Session->setFlash('خطای شماره 12 - درخواست شما نامعتبر می باشد و امکان بررسی آن وجود ندارد!', 'message', array('type' => 'alert-error'));
@@ -36,7 +36,7 @@ class UsersController extends AppController {
     }
 
     public function admin_logout() {
-        $this->Session->setFlash('شما با موفقیت از سیستم خارج شدید', 'message', array('type' => 'alert-success'));
+        $this->Session->setFlash('شما با موفقیت از سیستم خارج شدید', 'message', array('type' => 'success'));
         $this->redirect($this->Auth->logout());
     }
 
@@ -48,7 +48,7 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('ثبت نام شما تکمیل شد. می توانید وارد شوید'), 'default', array('class' => 'alert alert-success', 'id' => 'error'));
                 $this->redirect(array('action' => 'login', 'admin' => TRUE));
             } else {
-                $this->Session->setFlash('خطای شماره 13 - اطلاعات وارد شده معتبر نمی باشد. لطفا به خطاهای سیستم دقت کرده و مجددا تلاش نمایید.', 'message', array('type' => 'alert-error'));
+                $this->Session->setFlash('خطای شماره 13 - اطلاعات وارد شده معتبر نمی باشد. لطفا به خطاهای سیستم دقت کرده و مجددا تلاش نمایید.', 'message', array('type' => 'error'));
             }
         }
         $this->layout = 'login';

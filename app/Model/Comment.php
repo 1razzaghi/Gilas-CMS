@@ -23,9 +23,9 @@ class Comment extends AppModel {
  */
 	public $validate = array(
 		'name' => array(
-			'alphanumeric' => array(
-				'rule' => array('alphanumeric'),
-				//'message' => 'Your custom message here',
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'ورود نام الزامی است',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -35,7 +35,7 @@ class Comment extends AppModel {
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
-				//'message' => 'Your custom message here',
+				'message' => 'ورود ایمیل الزامی است و باید با فرمت صحیح وارد شود',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -45,7 +45,7 @@ class Comment extends AppModel {
 		'website' => array(
 			'url' => array(
 				'rule' => array('url'),
-				//'message' => 'Your custom message here',
+				'message' => 'ورود وبسایت الزامی است و باید با فرمت صحیح وارد شود',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -55,15 +55,15 @@ class Comment extends AppModel {
 		'content' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'ورود متن الزامی است',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'minlength' => array(
-				'rule' => array('minlength'),
-				//'message' => 'Your custom message here',
+				'rule' => array('minlength',20),
+				'message' => 'متن نظر حداقل باید شامل 20 کاراکتر باشد',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -80,13 +80,7 @@ class Comment extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'ParentComment' => array(
-			'className' => 'Comment',
-			'foreignKey' => 'parent_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
+
 		'Content' => array(
 			'className' => 'Content',
 			'foreignKey' => 'content_id',
@@ -101,20 +95,6 @@ class Comment extends AppModel {
  *
  * @var array
  */
-	public $hasMany = array(
-		'ChildComment' => array(
-			'className' => 'Comment',
-			'foreignKey' => 'parent_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
+
 
 }

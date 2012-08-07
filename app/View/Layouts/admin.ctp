@@ -27,16 +27,33 @@
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">مطالب</a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">مطالب
+                                    <b class="caret"></b>
+                                </a>
                                 <ul class="dropdown-menu">
                                     <li><?php echo $this->Html->link('مدیریت مطالب', array('controller' => 'contents', 'action' => 'index', 'admin' => TRUE)); ?></li>
-                                    <li><?php echo $this->Html->link('مدیریت مجموعه', array('controller' => 'content_categories', 'action' => 'index', 'admin' => TRUE), array('class' => 'active')); ?></li>
+                                    <li><?php echo $this->Html->link('مدیریت مجموعه مطالب', array('controller' => 'content_categories', 'action' => 'index', 'admin' => TRUE), array('class' => 'active')); ?></li>
                                 </ul>
                             </li>
-                            <li><?php echo $this->Html->link('لیست مجموعه ها', array('controller' => 'product_categories', 'action' => 'index')); ?></li>
-                            <li><?php echo $this->Html->link('لیست کالاها', array('controller' => 'products', 'action' => 'index')); ?></li>
-                            <li><?php echo $this->Html->link('لیست مشتریان', array('controller' => 'customers', 'action' => 'index')); ?></li>
-                            <li><?php echo $this->Html->link('لیست کاربران', array('controller' => 'users', 'action' => 'index')); ?></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">وب لینک ها
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><?php echo $this->Html->link('مدیریت وب لینک ها', array('controller' => 'weblinks', 'action' => 'index', 'admin' => TRUE)); ?></li>
+                                    <li><?php echo $this->Html->link('مدیریت مجموعه وب لینک', array('controller' => 'weblink_categories', 'action' => 'index', 'admin' => TRUE), array('class' => 'active')); ?></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">گالری تصاویر
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><?php echo $this->Html->link('مدیریت تصاویر', array('controller' => 'gallery_items', 'action' => 'index', 'admin' => TRUE)); ?></li>
+                                    <li><?php echo $this->Html->link('مدیریت مجموعه گالری تصاویر', array('controller' => 'gallery_categories', 'action' => 'index', 'admin' => TRUE), array('class' => 'active')); ?></li>
+                                </ul>
+                            </li>
+                            <li><?php echo $this->Html->link('مدیریت تماس ها', array('controller' => 'contact_details', 'action' => 'index', 'admin' => TRUE)); ?></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                     <div class="user-info">
@@ -49,7 +66,8 @@
         </div>
         <div class="container">
             <div id="top">
-                <div id="msg"><?php echo $this->Session->flash(); ?></div>
+                <div id="flash_message"><?php echo $this->Session->flash('flash', array('element' => 'message')); ?></div>
+                <div id="flash_message"><?php echo $this->Session->flash('flash', array('element' => 'message_1')); ?></div>
             </div>
             <div id="content"><?php echo $this->fetch('content'); ?></div>
             <div id="footer"><pre><?php echo $this->element('sql_dump'); ?></pre></div>

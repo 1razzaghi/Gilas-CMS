@@ -1,4 +1,4 @@
-body, td, pre {color:#000; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10px; margin:8px;}
+body, td, pre {color:#000; font-family:Tahoma; font-size:12px; margin:8px;direction: rtl;}
 body {background:#FFF;}
 body.mceForceColors {background:#FFF; color:#000;}
 h1 {font-size: 2em}
@@ -22,14 +22,14 @@ abbr {border-bottom:1px dashed #CCC; cursor:help}
 
 /* IE */
 * html body {
-scrollbar-3dlight-color:#F0F0EE;
-scrollbar-arrow-color:#676662;
-scrollbar-base-color:#F0F0EE;
-scrollbar-darkshadow-color:#DDD;
-scrollbar-face-color:#E0E0DD;
-scrollbar-highlight-color:#F0F0EE;
-scrollbar-shadow-color:#F0F0EE;
-scrollbar-track-color:#F5F5F5;
+    scrollbar-3dlight-color:#F0F0EE;
+    scrollbar-arrow-color:#676662;
+    scrollbar-base-color:#F0F0EE;
+    scrollbar-darkshadow-color:#DDD;
+    scrollbar-face-color:#E0E0DD;
+    scrollbar-highlight-color:#F0F0EE;
+    scrollbar-shadow-color:#F0F0EE;
+    scrollbar-track-color:#F5F5F5;
 }
 
 img:-moz-broken {-moz-force-broken-image-icon:1; width:24px; height:24px}

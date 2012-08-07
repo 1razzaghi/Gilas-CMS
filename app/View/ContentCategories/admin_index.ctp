@@ -1,6 +1,5 @@
 <legend>لیست مجموعه ها</legend>
-<?php echo $this->Html->link('افزودن', array('action' => 'add'), array('class' => 'btn btn-primary btn-large'));
- //debug($contentCategories);
+<?php echo $this->Html->link('افزودن مجموعه مطلب', array('action' => 'add'), array('class' => 'btn btn-primary btn-large'));
 ?>
 <p>&nbsp;</p>
 <table class="table table-bordered table-striped">
@@ -20,7 +19,7 @@
         <tr>
             <td><?php echo $j; ?></td>
             <td><?php echo $contentCategory['ContentCategory']['name']; ?></td>
-            <td><?php echo $this->Form->postLink('حذف', array('action' => 'admin_delete', $contentCategory['ContentCategory']['id']), array('class' => 'btn btn-danger'), 'آیا از حذف این آیتم مطمئن هستید؟'); ?> | <?php echo $this->Html->link('ویرایش', array('action' => 'admin_edit', $contentCategory['ContentCategory']['id']), array('class' => 'btn btn-info')); ?></td>
+            <td><?php echo $this->Form->postLink('حذف', array('action' => 'delete', $contentCategory['ContentCategory']['id'], 'admin' => TRUE), array('class' => 'btn btn-danger'), 'آیا از حذف این آیتم مطمئن هستید؟'); ?> | <?php echo $this->Html->link('ویرایش', array('action' => 'edit', $contentCategory['ContentCategory']['id'], 'admin' => TRUE), array('class' => 'btn btn-info')); ?></td>
         </tr>
         <?php
         $j++;

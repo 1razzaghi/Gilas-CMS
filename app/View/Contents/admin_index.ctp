@@ -1,6 +1,6 @@
 <legend>لیست مطالب</legend>
 <?php
-echo $this->Html->link('افزودن', array('action' => 'add'), array('class' => 'btn btn-primary btn-large'));
+echo $this->Html->link('افزودن مطلب', array('action' => 'add'), array('class' => 'btn btn-primary btn-large'));
 //debug($contents);
 ?>
 <p>&nbsp;</p>
@@ -12,6 +12,7 @@ echo $this->Html->link('افزودن', array('action' => 'add'), array('class' =
         <th id="grid-align">مجموعه</th>
         <th id="grid-align">منتشر شده</th>
         <th id="grid-align">صفحه نخست</th>
+        <th id="grid-align">نظر دهی</th>
         <th id="grid-align">نویسنده</th>
         <th id="grid-align">آخرین ویرایش</th>
         <th id="grid-align">عملیات</th>
@@ -29,25 +30,47 @@ echo $this->Html->link('افزودن', array('action' => 'add'), array('class' =
             <td id="grid-align"><?php echo $content['ContentCategory']['name']; ?></td>
             <td id="grid-align">
                 <?php
-                if ($content['Content']['published'])
+                if ($content['Content']['published']) {
                     $src = 'back-end/bootstrap/tick.png';
-                else
+                    echo $this->Form->postLink($this->Html->image($src), array('action' => 'unpublish_content', $content['Content']['id'], 'admin' => TRUE), array('escape' => false));
+                } else {
                     $src = 'back-end/bootstrap/publish_x.png';
-                echo $this->Html->image($src);
+                    echo $this->Form->postLink($this->Html->image($src), array('action' => 'publish_content', $content['Content']['id'], 'admin' => TRUE), array('escape' => false));
+                }
+
+
+                //echo $this->Html->image($src);
                 ?>
             </td>
             <td id="grid-align">
                 <?php
-                if ($content['Content']['frontpage'])
+                if ($content['Content']['frontpage']) {
                     $src = 'back-end/bootstrap/tick.png';
-                else
+                    echo $this->Form->postLink($this->Html->image($src), array('action' => 'remove_content_from_frontpage', $content['Content']['id'], 'admin' => TRUE), array('escape' => false));
+                } else {
                     $src = 'back-end/bootstrap/publish_x.png';
-                echo $this->Html->image($src);
+                    echo $this->Form->postLink($this->Html->image($src), array('action' => 'add_content_to_frontpage', $content['Content']['id'], 'admin' => TRUE), array('escape' => false));
+                }
+                ?>
+            </td>
+            <td id="grid-align">
+                <?php
+                if ($content['Content']['allow_comment']) {
+                    $src = 'back-end/bootstrap/tick.png';
+                    echo $this->Form->postLink($this->Html->image($src), array('action' => 'dis_allow_comment_to_content', $content['Content']['id'], 'admin' => TRUE), array('escape' => false));
+                } else {
+                    $src = 'back-end/bootstrap/publish_x.png';
+                    echo $this->Form->postLink($this->Html->image($src), array('action' => 'allow_comment_to_content', $content['Content']['id'], 'admin' => TRUE), array('escape' => false));
+                }
                 ?>
             </td>
             <td id="grid-align"><?php echo $content['User']['name']; ?></td>
             <td id="grid-align"><?php echo Jalali::niceShort($content['Content']['modified']); ?></td>
-            <td id="grid-align"><?php echo $this->Form->postLink('حذف', array('action' => 'admin_delete', $content['Content']['id']), array('class' => 'btn btn-danger'), 'آیا از حذف این آیتم مطمئن هستید؟'); ?> | <?php echo $this->Html->link('ویرایش', array('action' => 'admin_edit', $content['Content']['id']), array('class' => 'btn btn-info')); ?></td>
+            <td id="grid-align">
+                <?php echo $this->Form->postLink('حذف', array('action' => 'delete', $content['Content']['id'], 'admin' => TRUE), array('class' => 'btn btn-danger'), 'آیا از حذف این آیتم مطمئن هستید؟'); ?> | 
+                <?php echo $this->Html->link('ویرایش', array('action' => 'edit', $content['Content']['id'], 'admin' => TRUE), array('class' => 'btn btn-info')); ?> | 
+                <?php echo $this->Html->link('نظرات', array('controller' => 'comments', 'action' => 'view', $content['Content']['id'], 'admin' => TRUE), array('class' => 'btn')); ?>
+            </td>
         </tr>
         <?php
         $j++;

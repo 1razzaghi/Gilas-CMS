@@ -25,7 +25,7 @@ class WeblinkCategory extends AppModel {
 		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'ورود نام مجموعه الزامی است',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -41,15 +41,6 @@ class WeblinkCategory extends AppModel {
  *
  * @var array
  */
-	public $belongsTo = array(
-		'ParentWeblinkCategory' => array(
-			'className' => 'WeblinkCategory',
-			'foreignKey' => 'parent_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
 
 /**
  * hasMany associations
@@ -57,19 +48,6 @@ class WeblinkCategory extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'ChildWeblinkCategory' => array(
-			'className' => 'WeblinkCategory',
-			'foreignKey' => 'parent_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
 		'Weblink' => array(
 			'className' => 'Weblink',
 			'foreignKey' => 'weblink_category_id',

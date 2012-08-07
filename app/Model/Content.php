@@ -34,10 +34,20 @@ class Content extends AppModel {
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        'content_category_id' => array(
+            'comparison' => array(
+                'rule' => array('comparison', '!=', 0),
+                'message' => 'لطفا یک مجموعه برای مطلب انتخاب نمایید',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
         'slug' => array(
             'notempty' => array(
-                'rule' => array('notempty'),
-                'message' => 'ورود نام مستعار مطلب الزامی است',
+                'rule' => 'isUnique',
+                'message' => 'این نام مستعار قبلا ثبت شده است. لطفا نام دیگری را امتحان کنید',
             //'allowEmpty' => false,
             //'required' => false,
             //'last' => false, // Stop validation after this rule
